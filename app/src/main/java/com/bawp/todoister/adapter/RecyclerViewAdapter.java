@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatRadioButton;
@@ -51,9 +52,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 });
 
         holder.task.setText(task.getTask());
-        holder.todayChip.setText(formatted);
-        holder.todayChip.setTextColor(Utils.priorityColor(task));
-        holder.todayChip.setChipIconTint(colorStateList);
+//        Paints calendar icon on task in the color of priority
+//        holder.todayChip.setText(formatted);
+//        holder.todayChip.setTextColor(Utils.priorityColor(task));
+//        holder.todayChip.setChipIconTint(colorStateList);
+        holder.priorityImage.setColorFilter(Utils.priorityColor(task));
         holder.radioButton.setButtonTintList(colorStateList);
     }
 
@@ -66,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public AppCompatRadioButton radioButton;
         public AppCompatTextView task;
         public Chip todayChip;
+        public ImageView priorityImage;
 
         onTodoClickListener viewOnTodoClickListener;
 
@@ -74,6 +78,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             radioButton = itemView.findViewById(R.id.todo_radio_button);
             task = itemView.findViewById(R.id.todo_row_todo);
             todayChip = itemView.findViewById(R.id.todo_row_chip);
+            priorityImage = itemView.findViewById(R.id.todo_row_priority);
+
             this.viewOnTodoClickListener = onTodoClickListener;
 
             // attach onClickListener to each row
