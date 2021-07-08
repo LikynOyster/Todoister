@@ -6,11 +6,11 @@ Develop a personal task management app using Adroid with the minimum requirement
 1) A user is able to create, edit and delete a task information including the task description, start and end date/time, priority.  
 
 2) The user is ableto view a list of tasks which are based on the following category:
-a. completed 
-b. In progress  
-c. Overdue 
-
-Note: the priority should be presentedin an image/icon.
+- completed 
+- In progress  
+- Overdue 
+  
+  Note: the priority should be presentedin an image/icon.
 
 3) If a task is deleted, thesystem shall movethe task into a trash bin. User can recover a task from the trash bin or delete atask permanentlyfrom the trash bin.
 
