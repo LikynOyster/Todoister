@@ -56,12 +56,12 @@
             android:src="@android:drawable/ic_menu_share"
             app:tint="#737373" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Share"
-            android:textColor="#737373"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
     </LinearLayout>
