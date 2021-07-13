@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements onTodoClickListen
     private int counter;
     BottomSheetFragment bottomSheetFragment;
     private SharedViewModel sharedViewModel;
+    Button bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,20 @@ public class MainActivity extends AppCompatActivity implements onTodoClickListen
         taskViewModel.getAllTasks().observe(this, tasks -> {
             recyclerViewAdapter = new RecyclerViewAdapter(tasks, this);
             recyclerView.setAdapter(recyclerViewAdapter);
+        });
+        bt=(Button)findViewById(R.id.btnShare);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent =new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "Your Body Here";
+                String shareSub = "Your Subject Here";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(myIntent,"Share using"));
+
+            }
         });
 
         FloatingActionButton fab = findViewById(R.id.fab);
