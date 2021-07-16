@@ -1,5 +1,6 @@
 package com.bawp.todoister;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.bawp.todoister.adapter.RecyclerViewAdapter;
@@ -21,6 +22,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements onTodoClickListener {
     private static final String TAG = "ITEM";
@@ -57,20 +59,20 @@ public class MainActivity extends AppCompatActivity implements onTodoClickListen
             recyclerViewAdapter = new RecyclerViewAdapter(tasks, this);
             recyclerView.setAdapter(recyclerViewAdapter);
         });
-        bt=(Button)findViewById(R.id.btnShare);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent =new Intent(Intent.ACTION_SEND);
-                myIntent.setType("text/plain");
-                String shareBody = "Your Body Here";
-                String shareSub = "Your Subject Here";
-                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
-                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
-                startActivity(Intent.createChooser(myIntent,"Share using"));
-
-            }
-        });
+//        bt=(Button)findViewById(R.id.btnShare);
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent myIntent =new Intent(Intent.ACTION_SEND);
+//                myIntent.setType("text/plain");
+//                String shareBody = "Your Body Here";
+//                String shareSub = "Your Subject Here";
+//                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+//                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+//                startActivity(Intent.createChooser(myIntent,"Share using"));
+//
+//            }
+//        });
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

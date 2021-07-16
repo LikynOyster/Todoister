@@ -84,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             // attach onClickListener to each row
             itemView.setOnClickListener(this);
+            radioButton.setOnClickListener(this);
 
         }
 
