@@ -62,6 +62,7 @@
             android:layout_gravity="center_vertical"
             android:text="Share"
             android:textColor="#FFFFFF"
+            android:id="@+id/btnShare"
             android:textSize="16sp" />
 
     </LinearLayout>
