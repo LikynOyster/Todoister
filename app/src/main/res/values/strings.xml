@@ -25,7 +25,7 @@
     <string name="radio_med">Medium</string>
     <string name="radio_low">Low</string>
     <string name="image_description">button image</string>
-    <string name="about_text">Todoist Clone App - by BAWP - version 0.1</string>
+    <string name="about_text">Todo App For Mobile Assignement </string>
     <string name="add_todos">Add a Todo...</string>
     <string name="priority_flag_description">priority flag</string>
 </resources>
