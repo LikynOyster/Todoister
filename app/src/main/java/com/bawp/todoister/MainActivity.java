@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements onTodoClickListen
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(MainActivity.this, "Task not deleted", Toast.LENGTH_SHORT).show();
             }
+
         });
         delete.show();
         recyclerViewAdapter.notifyDataSetChanged();
