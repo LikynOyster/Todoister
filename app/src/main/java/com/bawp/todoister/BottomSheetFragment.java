@@ -30,6 +30,7 @@ import java.util.Date;
 public class BottomSheetFragment extends BottomSheetDialogFragment implements View.OnClickListener{
     private EditText enterTodo;
     private ImageButton calendarButton, priorityButton, saveButton;
+    private Button shareButton;
     private RadioGroup priorityRadioGroup;
     private Group calendarGroup;
     private RadioButton selectedRadioButton;
@@ -59,6 +60,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         saveButton = view.findViewById(R.id.save_todo_button);
         priorityButton = view.findViewById(R.id.priority_todo_button);
         priorityRadioGroup = view.findViewById(R.id.radioGroup_priority);
+        shareButton =(Button) view.findViewById(R.id.btnShare);
 
         Chip todayChip = view.findViewById(R.id.today_chip),
                 tomorrowChip = view.findViewById(R.id.tomorrow_chip),
@@ -66,6 +68,19 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         todayChip.setOnClickListener(this);
         tomorrowChip.setOnClickListener(this);
         nextWeekChip.setOnClickListener(this);
+        
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.putExtra(Intent.EXTRA_TEXT,
+                        "Task title: " + enterTodo.getText().toString() + "\n"
+
+                );
+                myIntent.setType("text/xml");
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+            }
+        });
 
         return view;
 
