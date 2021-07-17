@@ -1,5 +1,6 @@
 package com.bawp.todoister;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import com.bawp.todoister.model.TaskViewModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,11 +20,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements onTodoClickListener {
     private static final String TAG = "ITEM";
@@ -119,8 +123,22 @@ public class MainActivity extends AppCompatActivity implements onTodoClickListen
     // deletes the task upon click on radio button
     @Override
     public void onTodoRadioButtonClick(Task task) {
-        // add prompt to ask user whether they want to delete
-        TaskViewModel.delete(task);
+        AlertDialog.Builder delete = new AlertDialog.Builder(MainActivity.this);
+        delete.setTitle("Task Deletion");
+        delete.setMessage("Would you like to delete this task?");
+        delete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TaskViewModel.delete(task);
+            }
+        });
+        delete.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "Task not deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+        delete.show();
         recyclerViewAdapter.notifyDataSetChanged();
     }
 }

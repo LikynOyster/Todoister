@@ -2,6 +2,7 @@ package com.bawp.todoister.adapter;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.todo_row,parent,false);
+                .inflate(R.layout.todo_row, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,8 +44,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String formatted = Utils.formatDate(task.getDueDate());
 
         ColorStateList colorStateList = new ColorStateList(new int[][]{
-                new int[] {-android.R.attr.state_enabled},
-                new int[] {android.R.attr.state_enabled}
+                new int[]{-android.R.attr.state_enabled},
+                new int[]{android.R.attr.state_enabled}
         },
                 new int[]{
                         Color.LTGRAY, // disabled
@@ -65,17 +66,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return taskList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public AppCompatRadioButton radioButton;
         public AppCompatTextView task;
         public Chip todayChip;
         public ImageView priorityImage;
+        public ImageView deleteButton;
 
         onTodoClickListener viewOnTodoClickListener;
 
-        public ViewHolder(@NonNull View itemView){
-            super (itemView);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
             radioButton = itemView.findViewById(R.id.todo_radio_button);
+            deleteButton = itemView.findViewById(R.id.delete_button);
             task = itemView.findViewById(R.id.todo_row_todo);
             todayChip = itemView.findViewById(R.id.todo_row_chip);
             priorityImage = itemView.findViewById(R.id.todo_row_priority);
@@ -84,19 +87,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             // attach onClickListener to each row
             itemView.setOnClickListener(this);
-            radioButton.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
             Task currentTask = taskList.get(getAdapterPosition());
-           int id = v.getId();
-           if(id == R.id.todo_row_layout){
-               onTodoClickListener.onTodoClick(currentTask);
-           }else if(id == R.id.todo_radio_button){
-               onTodoClickListener.onTodoRadioButtonClick(currentTask);
-           }
+            int id = v.getId();
+            if (id == R.id.todo_row_layout) {
+                onTodoClickListener.onTodoClick(currentTask);
+            } else if (id == R.id.delete_button) {
+                onTodoClickListener.onTodoRadioButtonClick(currentTask);
+            }
         }
     }
 }
+
