@@ -156,6 +156,19 @@
             android:background="@android:color/holo_blue_light"
             android:text="@string/radio_low" />
     </RadioGroup>
+    <Button
+        android:id="@+id/btnShare"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Share"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/save_todo_button"
+        app:layout_constraintEnd_toStartOf="@+id/save_todo_button"
+        app:layout_constraintStart_toEndOf="@+id/priority_todo_button"
+        app:layout_constraintTop_toBottomOf="@+id/enter_todo_et" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/calendar_group"
